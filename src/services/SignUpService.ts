@@ -14,8 +14,6 @@ export default class SignUp {
     public static SignUp(req: Request, res: Response) {
         const json: ISignUpRequest = req.body;
         let userDatas: any = {};
-        const responseObject = signUpResponse(undefined, undefined);
-   
         userDao.getUserByEmail(json.emailId)
             .then(user => {
                 if (user) throw ResponseMessages.SIGNUP_USER_ALREADY_EXIST;
